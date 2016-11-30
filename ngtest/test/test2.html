@@ -1,0 +1,32 @@
+<html>
+<head>
+<link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+        .navbar { border-radius:0; }
+    </style>
+
+    <!-- JS (load angular, ui-router, and our custom js file) -->
+    <script src="angular.js"></script>
+    <script src="angular-ui-router.min.js"></script>
+    <script src="myapp.js"></script>
+</head>
+<body>
+<!-- Adding the ng-app declaration to initialize AngularJS -->
+<!-- When this element is clicked, hide the tooltip -->
+<div id="main" ng-app ng-controller="InlineEditorController" ng-click="hideTooltip()">
+
+	<!-- This is the tooltip. It is shown only when the showtooltip variable is truthful -->
+	<div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltip">
+
+		<!-- ng-model binds the contents of the text field with the "value" model.
+		 Any changes to the text field will automatically update the value, and
+		 all other bindings on the page that depend on it.  -->
+		<input type="text" ng-model="value" />
+	</div>
+
+	<!-- Call a method defined in the InlineEditorController that toggles
+	 the showtooltip variable -->
+	<p ng-click="toggleTooltip($event)">{{value}}</p>
+
+</div>
+    </body>
